@@ -1,0 +1,58 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+project.ext {
+    support = "26.1.0"
+    lifecycle = "1.1.0"
+    android_annotations = "4.3.1"
+}
+
+android {
+    compileSdkVersion 26
+    defaultConfig {
+        applicationId "nz.co.anz.ado"
+        minSdkVersion 21
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0.0"
+    }
+    buildTypes {
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.debug
+        }
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    testOptions {
+        unitTests.returnDefaultValues = true
+    }
+}
+
+dependencies {
+    kapt "org.androidannotations:androidannotations:$project.android_annotations"
+    implementation "org.androidannotations:androidannotations-api:$project.android_annotations"
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation 'com.squareup.retrofit2:retrofit:2.3.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
+
+    implementation "com.android.support:design:$project.support"
+    implementation "com.android.support:appcompat-v7:$project.support"
+
+    implementation "android.arch.lifecycle:viewmodel:$project.lifecycle"
+    implementation "android.arch.lifecycle:extensions:$project.lifecycle"
+
+    testImplementation 'junit:junit:4.12'
+    testImplementation 'org.mockito:mockito-core:2.10.0'
+
+}
