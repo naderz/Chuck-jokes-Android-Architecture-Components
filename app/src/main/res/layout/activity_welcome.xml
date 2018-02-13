@@ -6,6 +6,9 @@
     android:orientation="vertical"
     android:layout_height="match_parent">
 
+
+
+
     <TextView
         android:id="@+id/messageView"
         android:layout_width="wrap_content"
@@ -15,9 +18,16 @@
 
 
     <Button
-        android:id="@+id/button_joke"
+        android:id="@+id/buttonJoke"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="make me laugh"/>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
 </LinearLayout>

@@ -24,6 +24,7 @@ class LiveDataCallAdapter<R>(private val responseType: Type) : CallAdapter<R, Li
             override fun onActive() {
                 super.onActive()
                 if (started.compareAndSet(false, true)) {
+                    postValue(Resource.loading(null))
                     call.enqueue(object : Callback<R> {
                         override fun onResponse(call: Call<R>, response: Response<R>) {
                             postValue(Resource.success(response.body()))
