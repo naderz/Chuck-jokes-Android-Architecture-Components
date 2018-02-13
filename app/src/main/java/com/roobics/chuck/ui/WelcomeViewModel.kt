@@ -8,7 +8,7 @@ import com.roobics.chuck.data.ChuckJoke
 import com.roobics.chuck.data.ChuckRepository
 import com.roobics.chuck.utils.Resource
 
-class WelcomeViewModel(private var chuckRepository: ChuckRepository) : ViewModel() {
+class WelcomeViewModel(private val chuckRepository: ChuckRepository) : ViewModel() {
 
     private val trigger: MutableLiveData<Unit> = MutableLiveData()
 
